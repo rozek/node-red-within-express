@@ -1,0 +1,25 @@
+{
+  "name": "node-red-within-restana",
+  "version": "0.1.0",
+  "description": "embedding Node-RED within a Restana instance",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rozek/node-red-within-restana.git"
+  },
+  "keywords": [
+    "web-server",
+    "node-red",
+    "express-js",
+    "restana"
+  ],
+  "author": "Andreas Rozek <a.rozek@gmx.de> (https://www.rozek.de/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rozek/node-red-within-restana/issues"
+  },
+  "homepage": "https://github.com/rozek/node-red-within-restana#readme"
+}
