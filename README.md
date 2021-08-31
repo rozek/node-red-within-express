@@ -3,10 +3,10 @@
 embedding Node-RED within an Express.js instance
 
 
-* primary Domains and virtual Hosts
-  * self-signed Certificates
+* HTTP-only without certificates
+* HTTPS (and auto-redirection from HTTP to HTTPS) with self-signed or "Let's Encrypt" Certificates
+* virtual Hosts
   * how to configure Domains in /etc/hosts
-  * Support for "Let's Encrypt"
   * Subdomains
 * User Registry
   * Basic Auth and PBKDF2
