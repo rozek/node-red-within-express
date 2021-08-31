@@ -1,6 +1,6 @@
-# node-red-within-restana #
+# node-red-within-express #
 
-embedding Node-RED within a Restana instance (similar to Express.js)
+embedding Node-RED within an Express.js instance
 
 
 * initial Domains
