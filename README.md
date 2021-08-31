@@ -8,8 +8,10 @@ embedding Node-RED within an Express.js instance
   * how to configure Domains in /etc/hosts
   * Support for "Let's Encrypt"
   * Subdomains
-* initial User Registry
-* how to add Users to the Registry
+* User Registry
+  * Basic Auth and PBKDF2
+  * adding Users to the Registry
+  * protecting the Node-RED Editor
 * initial Node-RED Flows
 * Postman Collection for Tests
 
