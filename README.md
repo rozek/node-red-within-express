@@ -12,6 +12,7 @@ embedding Node-RED within an Express.js instance
   * Basic Auth and PBKDF2
   * adding Users to the Registry
   * protecting the Node-RED Editor
+* CORS Support
 * initial Node-RED Flows
 * Postman Collection for Tests
 
