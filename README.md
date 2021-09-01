@@ -60,7 +60,7 @@ with the following arguments:
 The following options are supported:
 
 * **`--server-port <port>`**<br>specifies the TCP port at which to listen for incoming HTTPS requests. The default is `8443`
-* **`--redirection-port <port>`**<br>if specified, this option activates HTTP-to-HTTPS redirection and specifies the TCP port at which to listen for incoming HTTP requests
+* **`--redirection-port <port>`**<br>if provided, this option activates HTTP-to-HTTPS redirection and specifies the TCP port at which to listen for incoming HTTP requests
 * **`--proxy <proxy>`**<br>activates and configures proxy support. Consider the [Express.js documentation](https://expressjs.com/en/guide/behind-proxies.html) for a list and explanation of actually allowed values
 * **`--domain <domain>`**<br>
 * **`--virtual-hosts <virtual-hosts>`**<br>
