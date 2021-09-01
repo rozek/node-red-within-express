@@ -125,6 +125,7 @@
     .option('--domain <domain>', '(primary) domain', parseDomain)
     .option('--virtual-hosts <virtual-hosts>', 'list of virtual hosts', parseVirtualHosts)
     .option('--allow-subdomains', 'map subdomains to subfolders')
+    .option('--ignore-www', 'avoid separate "www." subdomain')
     .option('--cert-folder <folder>','folder with server certificate files')
     .option('--pbkdf2-iterations <count>', 'PBKDF2 iteration count', parsePBKDF2Iterations)
     .option('--log-format <format>', 'morgan-compatible log format')
@@ -167,6 +168,7 @@
           virtualHosts.unshift(primaryDomain)
         }
       }
+    const ignoreWWW        = (Options.ignoreWww == null ? true : Options.ignoreWww)
     const PBKDF2Iterations = Options.pbkdf2Iterations || 100000
     const LogFormat        = Options.logFormat        || 'common'
   const FileRoot   = RootFolder   || path.join(process.cwd(),'public')
@@ -233,7 +235,11 @@
             (Request.virtualHost === Candidate) ||
             allowSubdomains && Request.virtualHost.endsWith('.' + Candidate)
           ) {
-            virtualHost = Candidate
+            virtualHost = (
+              ignoreWWW && (Request.virtualHost === 'www.' + Candidate)
+              ? Candidate
+              : Request.virtualHost
+            )
           }
         })
       if (virtualHost === '') {       // the given virtual host is not supported
