@@ -45,6 +45,32 @@ For a quick start, the server comes preconfigured for two different use cases:
 
 ## Invocation Parameters ##
 
+The server in this repo has been implemented as a Node.js script and can be invoked as follows
+
+```
+node WebServer.js [options] <file-root> [<configuration-folder> [<log-folder>]]
+```
+
+with the following arguments:
+
+* **`<file-root>`**<br>pecifies the root folder (relative to the current working directory) of all statically delivered files. By default, this is a subfolder of the current working directory called `public`
+* **`<configuration-folder>`**<br>specifies the folder (relative to the current working directory) where configuration files (such as the list of registered users) are found. By default, this is the current working directory itself
+* **`<log-folder>`**<br>specifies the folder (relative to the current working directory) into which the log file is written. By default, this is a subfolder of the current working directory called `logs`
+
+The following options are supported:
+
+* **`--server-port <port>`**<br>specifies the TCP port at which to listen for incoming HTTPS requests. The default is `8443`
+* **`--redirection-port <port>`**<br>if specified, this option activates HTTP-to-HTTPS redirection and specifies the TCP port at which to listen for incoming HTTP requests
+* **`--proxy <proxy>`**<br>activates and configures proxy support. Consider the [Express.js documentation](https://expressjs.com/en/guide/behind-proxies.html) for a list and explanation of actually allowed values
+* **`--domain <domain>`**<br>
+* **`--virtual-hosts <virtual-hosts>`**<br>
+* **`--allow-subdomains`**<br>
+* **`--ignore-www`**<br>
+* **`--cert-folder <folder>`**<br>
+* **`--pbkdf2-iterations <count>`**<br>
+* **`--log-format <format>`**<br>
+
+
 ### Configuring Domains and Virtual Hosts ###
 
 ## Embedded Node-RED Instance ##
