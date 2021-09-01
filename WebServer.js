@@ -109,7 +109,7 @@
         if (/^[0-9]+$/.test(Value)) {
           return parseInt(Value,10)
         } else {
-          return Value // no further argument checks here, let nanoexpress do that
+          return Value    // no further validations here, leave it up to Express
         }
     }
   }
@@ -296,7 +296,8 @@
     let URLPath = url.parse(Request.url).pathname
     if (URLPath[0] !== '/') { URLPath = '/' + URLPath }
 
-    let Origin = Request.header('Origin')
+    let Origin = (Request.header('Origin') || '')      // trim protocol and port
+      .replace(/^[^:]+.\/\//,'').replace(/:\d+$/,'')
 
     for (let i = 0, l = CORSRegistry.length ; i< l; i++) {
       let Rule = CORSRegistry[i]
@@ -409,7 +410,7 @@
       ':remote-addr :remote-user :method :url :status :res[content-length] - :response-time ms'
     ))
 
-  /**** require basic authentication for Node-RED editor ****/
+  /**** require basic authentication for Node-RED editor (only) ****/
 
     actualService.use(REDSettings.httpAdminRoot, authorizeRequest)
 
