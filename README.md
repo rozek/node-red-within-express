@@ -34,8 +34,8 @@ Just install [NPM](https://docs.npmjs.com/) according to the instructions for yo
 
 For a quick start, the server comes preconfigured for two different use cases:
 
-* to be run *without* support for virtual hosts<br>this variant does not require much preparation and is ideal for initial experiments
-* to be run *with* support for virtual hosts<br>this variant requires a bit of preparational work but may be used to test installations serving multiple domains
+* *without* support for virtual hosts<br>this variant does not require much preparation and is ideal for initial experiments
+* *with* support for virtual hosts<br>this variant requires a bit of preparational work but may be used to test installations serving multiple domains
 
 #### Variant without Support for virtual Hosts ####
 
