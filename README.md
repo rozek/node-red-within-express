@@ -34,12 +34,12 @@ Just install [NPM](https://docs.npmjs.com/) according to the instructions for yo
 
 For a quick start, the server comes preconfigured for two different use cases:
 
-* *without* support for virtual hosts<br>this variant does not require much preparation and is ideal for initial experiments
-* *with* support for virtual hosts<br>this variant requires a bit of preparational work but may be used to test installations serving multiple domains
+* *without* virtual hosts processing<br>this variant does not require much preparation and is ideal for initial experiments
+* *with* virtual hosts processing<br>this variant requires a bit of preparational work but may be used to test installations serving multiple domains
 
-#### Variant without Support for virtual Hosts ####
+#### Variant without virtual Hosts Processing ####
 
-#### Variant with Support for virtual Hosts ####
+#### Variant with virtual Hosts Processing ####
 
 ### First Experiments ###
 
@@ -81,7 +81,7 @@ The following options are supported:
 
 ## CORS Support ##
 
-## Content Security Polcies ##
+## Content Security Policies ##
 
 ## Logging ##
 
