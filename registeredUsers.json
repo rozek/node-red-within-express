@@ -1,0 +1,7 @@
+{
+  "node-red":{
+    "Roles":["node-red"],
+    "Salt":"4486e8d35b8275020b1301226cc77963",
+    "Hash":"ab2b740ea9148aa4f320af3f3ba60ee2e33bb8039c57eea2b29579ff3f3b16bec2401f19e3c6ed8ad36de432b80b6f973a12c41af5d50738e4bb902d0117df53"
+  }
+}
