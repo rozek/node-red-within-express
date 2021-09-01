@@ -64,7 +64,7 @@ The following options are supported:
 * **`--proxy <proxy>`**<br>activates and configures proxy support. Consider the [Express.js documentation](https://expressjs.com/en/guide/behind-proxies.html) for a list and explanation of actually allowed values
 * **`--domain <domain>`**<br>
 * **`--virtual-hosts <virtual-hosts>`**<br>
-* **`--allow-subdomains`**<br>if specified, all subdomains of the given primary domain and any given virtual host is processed as well
+* **`--allow-subdomains`**<br>if specified, all subdomains of the given primary domain and virtual hosts are processed as well
 * **`--ignore-www`**<br>if specified, subdomains of the for `www.<domain>` are not treated as a separate subdomain but mapped to their main `<domain>`
 * **`--cert-folder <folder>`**<br>specifies the folder where to find segver certificates. By default, this is a subfolder of the server's current working directory called `certificates`
 * **`--pbkdf2-iterations <count>`**<br>specifies the number of iterations when computing PBKDF2 hashes. Default is 100000
