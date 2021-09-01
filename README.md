@@ -63,7 +63,7 @@ The following options are supported:
 * **`--redirection-port <port>`**<br>if provided, this option activates HTTP-to-HTTPS redirection and specifies the TCP port at which to listen for incoming HTTP requests
 * **`--proxy <proxy>`**<br>activates and configures proxy support. Consider the [Express.js documentation](https://expressjs.com/en/guide/behind-proxies.html) for a list and explanation of actually allowed values
 * **`--domain <domain>`**<br>
-* **`--virtual-hosts <virtual-hosts>`**<br>
+* **`--virtual-hosts <virtual-hosts>`**<br>activates virtual hosts processing and configures the domains to handle. The given argument may either be an empty string (`""`) or a string containing a comma-separated list of internet domains
 * **`--allow-subdomains`**<br>if specified, all subdomains of the given primary domain and virtual hosts are processed as well
 * **`--ignore-www`**<br>if specified, subdomains of the form `www.<domain>` are not treated as a separate subdomain but mapped to their main `<domain>`
 * **`--cert-folder <folder>`**<br>specifies the folder where to find server certificates. By default, this is a subfolder of the server's current working directory called `certificates`
