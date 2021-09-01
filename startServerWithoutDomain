@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+node WebServer.js public/www.local-server.org
