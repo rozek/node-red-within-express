@@ -66,7 +66,7 @@ The following options are supported:
 * **`--virtual-hosts <virtual-hosts>`**<br>
 * **`--allow-subdomains`**<br>if specified, all subdomains of the given primary domain and virtual hosts are processed as well
 * **`--ignore-www`**<br>if specified, subdomains of the form `www.<domain>` are not treated as a separate subdomain but mapped to their main `<domain>`
-* **`--cert-folder <folder>`**<br>specifies the folder where to find segver certificates. By default, this is a subfolder of the server's current working directory called `certificates`
+* **`--cert-folder <folder>`**<br>specifies the folder where to find server certificates. By default, this is a subfolder of the server's current working directory called `certificates`
 * **`--pbkdf2-iterations <count>`**<br>specifies the number of iterations when computing PBKDF2 hashes. Default is 100000
 * **`--log-format <format>`**<br>
 
