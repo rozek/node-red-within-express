@@ -62,7 +62,7 @@ The following options are supported:
 * **`--server-port <port>`**<br>specifies the TCP port at which to listen for incoming HTTPS requests. The default is `8443`
 * **`--redirection-port <port>`**<br>if provided, this option activates HTTP-to-HTTPS redirection and specifies the TCP port at which to listen for incoming HTTP requests
 * **`--proxy <proxy>`**<br>activates and configures proxy support. Consider the [Express.js documentation](https://expressjs.com/en/guide/behind-proxies.html) for a list and explanation of actually allowed values
-* **`--domain <domain>`**<br>
+* **`--domain <domain>`**<br>specifies the primary domain this server should represent. It should be the "common name" (CN) of the associated server certificate and is also used in the name of sny log file. If virtual hosts are given as well (even if the list is empty), the primary domain is automatically added to that list
 * **`--virtual-hosts <virtual-hosts>`**<br>activates virtual hosts processing and configures the domains to handle. The given argument may either be an empty string (`""`) or a string containing a comma-separated list of internet domains
 * **`--allow-subdomains`**<br>if specified, all subdomains of the given primary domain and virtual hosts are processed as well
 * **`--ignore-www`**<br>if specified, subdomains of the form `www.<domain>` are not treated as a separate subdomain but mapped to their main `<domain>`
