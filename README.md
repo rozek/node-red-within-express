@@ -20,7 +20,7 @@ The implemented server offers the following features:
 * **User Registry with PBKDF2 hashed Passwords and Role Support**<br>the list of registered users is stored in a JSON file with passwords saved as PBKDF2 hashes with random salt. While the server itself does not contain any user management, it may easily be added as a Node-RED flow - but, in fact, a simple text editor is sufficient to add new users, change existing ones or remove obsolete users
 * **Path-specific CORS**<br>"Cross-Origin Resource Sharing" may be configured for complete sites as a whole or for specific resource paths at any desired granularity
 * **configurable "Content Security Policies"**<br>the server is secured using [Helmet](https://github.com/helmetjs/helmet) with a configuration option for specific "Content Security Policies"
-* **standard-compliant Logging**<br>access logging is done using [morgan](https://expressjs.com/en/resources/middleware/morgan.html) and may be written into a file either in "standard Apache common log format" or as configured
+* **standard-compliant Logging**<br>access logging is done using [morgan](https://expressjs.com/en/resources/middleware/morgan.html). Logs may be written into a file either in "standard Apache common log format" or any other format
 
 ## Installation and Use ##
 
