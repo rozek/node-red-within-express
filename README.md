@@ -53,7 +53,7 @@ node WebServer.js [options] <file-root> [<configuration-folder> [<log-folder>]]
 
 with the following arguments:
 
-* **`<file-root>`**<br>specifies the root folder (relative to the current working directory) of all statically delivered files. By default, this is a subfolder of the current working directory called `public`
+* **`<file-root>`**<br>specifies the root folder (relative to the current working directory) of all deliverable static files. By default, this is a subfolder of the current working directory called `public`
 * **`<configuration-folder>`**<br>specifies the folder (relative to the current working directory) where configuration files (such as the list of registered users) are found. By default, this is the current working directory itself
 * **`<log-folder>`**<br>specifies the folder (relative to the current working directory) into which the log file is written. By default, this is a subfolder of the current working directory called `logs`
 
