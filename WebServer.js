@@ -279,9 +279,9 @@
 
   let CORSRegistry
   try {
-    CORSRegistry = Object.assign(Object.create(null), JSON.parse(
+    CORSRegistry = JSON.parse(
       fs.readFileSync(path.join(ConfigRoot, 'sharedResources.json'), 'utf8')
-    ))
+    )
 
     for (let i = 0, l = CORSRegistry.length ; i< l; i++) {
       let Rule = CORSRegistry[i]
@@ -299,7 +299,7 @@
     let Origin = (Request.header('Origin') || '')      // trim protocol and port
       .replace(/^[^:]+.\/\//,'').replace(/:\d+$/,'')
 
-    for (let i = 0, l = CORSRegistry.length ; i< l; i++) {
+    for (let i = 0, l = CORSRegistry.length ; i < l; i++) {
       let Rule = CORSRegistry[i]
       if (Rule.PathPattern.test(URLPath)) {
         let allowSharing = (
