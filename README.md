@@ -63,11 +63,13 @@ Any text editor will do the job.
 
 ### First Experiments ###
 
-For the sake of a simpler invocation, the available start scripts should be made executable first:
+On UNIX-like systems, the available start scripts should be made executable in order to simplify their invocation:
 
 ```
 chmod +x startServer*
 ```
+
+Under Windows, the first line of these scripts (the "shebang" line) may have to be deleted instead.
 
 Now you are ready to start your server: within a terminal window, navigate to the folder containing this repository and either enter
 
