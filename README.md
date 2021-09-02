@@ -90,7 +90,7 @@ New users may be added and existing users changed or deleted at will with a simp
 
 * the object's property names are the names of registered users<br>user names have no specific format, they may be user ids, email addresses or any other data you are free to choose
 * the object's property values are JavaScript objects with the following properties, at least (additional properties may be added at will):
-  * **Roles**<br>is either `null` or contains a list of strings with the user's roles. There is no specific format for role names - only role `node-red` has a special meaning: users with this role are allowed to access the embedded Node-RED editor
+  * **Roles**<br>is either `null` or contains a list of strings with the user's roles. There is no specific format for role names - just the role `node-red` has a special meaning: users with this role are allowed to access the embedded Node-RED editor
   * **Salt**<br>contains a random "salt" value which is used during the PBKDF2 password hash calculation
   * **Hash**<br>contains the actual PBKDF2 hash of the user's password
 
