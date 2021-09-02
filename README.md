@@ -76,12 +76,13 @@ If everything works well, the server reports its start-up any logs all incoming 
 
 On a "production system", usually no special precautions need to be taken to run this server.
 
-On a local machine, however, the following configuration steps should be taken:
+Synthetic tests with virtual host on a local machine, however, should be prepared as follows:
 
+* generate self-signed certificates for all domains under test:<br>
+* add entries for all domains under test to `/etc/hosts`:<br>
+* modify the script `startServerWithDomains` accordingly
 
-
-
-
+You may then run `startServerWithDomains` and navigate your browser to any of the configured domains (don't forget to specify the port number of your server unless it is a standard one)
 
 ## Embedded Node-RED Instance ##
 
