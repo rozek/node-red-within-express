@@ -88,6 +88,8 @@ On a local machine, however, the following configuration steps should be taken:
 The embedded Node-RED instance comes with two sets of flows for initial "smoke tests": one for a server *with* virtual host processing and one *without*.
 A GET request to `/hello-world` simply responds with a "Hello, World!" message, GET, PUT, POST, PATCH and DELETE requests to `show-request` dump the contents of any incoming message to the Node-RED debug window.
 
+![initial Flow Sets](initialFlows.png)
+
 Both flow sets are welcome to be removed and replaced with more meaningful nodes.
 
 ## User Registry ##
