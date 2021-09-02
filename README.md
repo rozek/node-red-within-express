@@ -147,6 +147,21 @@ A GET request to `/hello-world` simply responds with a "Hello, World!" message, 
 
 Both flow sets are welcome to be removed and replaced with more meaningful ones.
 
+For your own flows, the following server parameters are copied into the global context:
+
+* **`ServerPort`**<br>contains the port number at which this server listens for incoming requests
+* **`RedirectionPort`**<br>is either `undefined` or contains the port number of the redirection server
+* **`behindProxy`**<br>is either `false` or contains the setting given in command option `--proxy`
+* **`primaryDomain`**<br>is either `undefined` or contains the primary domain name for this server
+* **`virtualHosts`**<br>contains a (potentially empty) JavaScript array with the names of all domains handled by this server
+* **`allowSubdomains`**<br>is `true` if subdomains are allowed or `false` otherwise
+* **`PBKDF2Iterations`**<br>contains the number of PBKDF2 iterations calculated when generating password hashes
+* **`FileRoot`**<br>contains the absolute path of the root folder containing all static files which may be delivered by this server
+* **`ConfigRoot`**<br>contains the absolute path of the folder containing any server configuration files
+* **`LogRoot`**<br>contains the absolute path of the folder into which logs are written
+* **`CORSRegistry`**<br>contains the JavaScript array with all CORS rules. The array is copied "by reference" which means that changes in this array immediately affect the server itself (no server restart required)
+* **`UserRegistry`**<br>contains the JavaScript object with all registered users. The object is copied "by reference" which means that changes in this object immediately affect the server itself (no server restart required)
+
 ## User Registry ##
 
 The server comes with a file `registeredUsers.json` which contains all "registered users" of this server.
