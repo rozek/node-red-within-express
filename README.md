@@ -80,7 +80,7 @@ A GET request to `/hello-world` simply responds with a "Hello, World!" message, 
 
 Both flow sets may well be removed and replaced with more meaningful nodes.
 
-## User registry ##
+## User Registry ##
 
 The server comes with a file `registeredUsers.json` which contains all "registered users" of this server.
 Initially, it contains a single user named "node-red" with password "t0pS3cr3t!" who is needed to access the embedded Node-RED editor.
@@ -90,13 +90,33 @@ New users may be added and existing users changed or deleted at will with a simp
 
 * the object's property names are the names of registered users<br>user names have no specific format, they may be user ids, email addresses or any other data you are free to choose
 * the object's property values are JavaScript objects with the following properties, at least (additional properties may be added at will):
-  * **Roles**<br>is either `null` or contains a list of strings with the user's roles. There is no specific format for role names - just the role `node-red` has a special meaning: users with this role are allowed to access the embedded Node-RED editor
-  * **Salt**<br>contains a random "salt" value which is used during the PBKDF2 password hash calculation
+  * **Roles**<br>is either missing or contains a list of strings with the user's roles. There is no specific format for role names - just the role `node-red` has a special meaning: users with this role are allowed to access the embedded Node-RED editor
+  * **Salt**<br>contains a random "salt" value which is used during PBKDF2 password hash calculation
   * **Hash**<br>contains the actual PBKDF2 hash of the user's password
 
-The server will not start if file `registeredUsers.json` is missing or does not have valid JSON content. Without a user with the role `node-red`, the embedded Node-RED editor cannot be accessed - Node-RED flows, however, will work as normal.
+The server will not start if file `registeredUsers.json` is missing or does not have valid JSON content.
+
+Users without proper `Salt` and `Hash` values can not authenticate themselves. Those without role `node-red` can not access the embedded Node-RED editor
+
+> Nota bene: Node-RED *flows* work independent of the embedded editor's accessability!
 
 ### Generating "Salt" and "Hash" ###
+
+This repo also contains a small utility called `generateSaltAndHash` which may be used to generate the "Salt" and "Hash" values for entries in the user registry.
+
+From within the folder containing the repository, it is invoked with
+
+```
+./generateSaltAndHash
+```
+
+The script will ask for a password and - as soon as the password has been entered - generate salt and hash values and display them on the console. From there, these values may be copied into the clipboard and added to `registeredUsers.json`.
+
+By default, `generateSaltAndHash` assumes a PBKDF2 iteration count of 100000. If another count is desired, the utility should be invoked with
+
+```
+./generateSaltAndHash pbkdf2-iterations <count>
+```
 
 ## CORS Support ##
 
