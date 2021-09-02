@@ -481,6 +481,8 @@ console.log('Node-RED Settings:',REDSettings)
     let RedirectionService
     if (RedirectionPort != null) {
       RedirectionService = express()
+        if (behindProxy) { safeService.set('trust proxy',behindProxy) }
+
         RedirectionService.all('*',function Redirector (Request, Response) {
           let virtualHost = Request.headers[':authority'] || Request.headers.host
           if (behindProxy && (Request.headers['x-forwarded-host'] != null)) {
