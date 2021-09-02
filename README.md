@@ -82,6 +82,9 @@ Both flow sets may well be removed and replaced with more meaningful nodes.
 
 ## User registry ##
 
+The server comes with a file `registeredUsers.json` which contains all "registered users" of this server.
+
+
 ### Generating "Salt" and "Hash" ###
 
 ## CORS Support ##
