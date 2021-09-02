@@ -34,8 +34,8 @@ Just install [NPM](https://docs.npmjs.com/) according to the instructions for yo
 
 For a quick start, the server comes preconfigured for two different use cases:
 
-* *without* virtual hosts processing<br>this variant does not require much preparation and is ideal for initial experiments
-* *with* virtual hosts processing<br>this variant requires a bit of preparational work but may be used to test installations serving multiple domains
+* ***without* virtual hosts processing**<br>this variant does not require much preparation and is ideal for initial experiments
+* ***with* virtual hosts processing**<br>this variant requires a bit of preparational work but may be used to test installations serving multiple domains
 
 #### Preparing a Server *without* virtual Hosts Processing ####
 
@@ -54,9 +54,9 @@ You will have to accept the certificate for `local-server.org` when you start yo
 In order to be able to directly navigate to `localserver.org` and its subdomains, you will have to append the following entries to the filw `/etc/hosts`:
 
 ```
-		127.0.0.1 local-server.org
-		127.0.0.1 www.local-server.org
-		127.0.0.1 webapp.local-server.org
+  127.0.0.1 local-server.org
+  127.0.0.1 www.local-server.org
+  127.0.0.1 webapp.local-server.org
 ```
 
 Any text editor will do the job.
