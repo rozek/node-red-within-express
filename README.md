@@ -51,7 +51,7 @@ Using HTTPS to access servers with self-signed certificates cause warnings in mo
 
 You will have to accept the certificate for `local-server.org` when you start your server and navigate to one of its pages for the first time. However, the configured exception will only last for a few minutes and will then have to be repeated.
 
-In order to be able to directly navigate to `localserver.org` and its subdomains, you will have to append the following entries to the filw `/etc/hosts`:
+In order to be able to directly navigate to `localserver.org` and its subdomains, you will have to append the following entries to the file `/etc/hosts` (under Windows, this file is found at `%windir%\system32\drivers\etc\hosts`):
 
 ```
   127.0.0.1 local-server.org
