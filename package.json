@@ -1,7 +1,7 @@
 {
   "name": "node-red-within-restana",
   "version": "0.1.0",
-  "description": "embedding Node-RED within a Restana instance",
+  "description": "embedding Node-RED within a Server built with Node.js and Express",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
