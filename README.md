@@ -90,7 +90,7 @@ A GET request to `/hello-world` simply responds with a "Hello, World!" message, 
 
 ![initial Flow Sets](initialFlows.png)
 
-Both flow sets are welcome to be removed and replaced with more meaningful nodes.
+Both flow sets are welcome to be removed and replaced with more meaningful ones.
 
 ## User Registry ##
 
