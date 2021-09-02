@@ -34,12 +34,32 @@ Just install [NPM](https://docs.npmjs.com/) according to the instructions for yo
 
 For a quick start, the server comes preconfigured for two different use cases:
 
-* *without* virtual hosts processing<br>this variant does not require much preparation and is ideal for initial experiments
-* *with* virtual hosts processing<br>this variant requires a bit of preparational work but may be used to test installations serving multiple domains
+* ***without* virtual hosts processing**<br>this variant does not require much preparation and is ideal for initial experiments
+* ***with* virtual hosts processing**<br>this variant requires a bit of preparational work but may be used to test installations serving multiple domains
 
-#### Variant without virtual Hosts Processing ####
+#### Preparing a Server *without* virtual Hosts Processing ####
 
-#### Variant with virtual Hosts Processing ####
+Using HTTPS to access servers with self-signed certificates cause warnings in most browsers, other tools may even refuse to work. In many browsers, it is sufficient to follow the presented instructions and accept the "malicious" certificate against all warnings (which is safe, since you created the certificate yourself). For other tools, it may be better to add the certificate to the system's list of trusted certificates.
+
+You will have to accept the certificate for `localhost` when you start your server and navigate to one of its pages for the first time. However, the configured exception will only last for a few minutes and will then have to be repeated.
+
+> Chromium-based browsers (such as Chrome or Microsoft Edge) offer a special flag which automatically accepts certificates for `localhost`: just enter `chrome://flags/#allow-insecure-localhost` (or `edge://flags/#allow-insecure-localhost`) into the browser's address list, press Enter and activate the flag on the page you will be shown
+
+#### Preparing a Server *with* virtual Hosts Processing ####
+
+Using HTTPS to access servers with self-signed certificates cause warnings in most browsers, other tools may even refuse to work. In many browsers, it is sufficient to follow the presented instructions and accept the "malicious" certificate against all warnings (which is safe, since you created the certificate yourself). For other tools, it may be better to add the certificate to the system's list of trusted certificates.
+
+You will have to accept the certificate for `local-server.org` when you start your server and navigate to one of its pages for the first time. However, the configured exception will only last for a few minutes and will then have to be repeated.
+
+In order to be able to directly navigate to `localserver.org` and its subdomains, you will have to append the following entries to the filw `/etc/hosts`:
+
+```
+  127.0.0.1 local-server.org
+  127.0.0.1 www.local-server.org
+  127.0.0.1 webapp.local-server.org
+```
+
+Any text editor will do the job.
 
 ### First Experiments ###
 
@@ -70,25 +90,34 @@ The following options are supported:
 * **`--pbkdf2-iterations <count>`**<br>specifies the number of iterations when computing PBKDF2 hashes. Default is 100000
 * **`--log-format <format>`**<br>specifies the format in which log entries are written into a file. Consider the [morgan documentation](https://expressjs.com/en/resources/middleware/morgan.html) for a list and explanation of permitted settings. Default is `common`
 
-If everything works well, the server reports its start-up any logs all incoming requests on `stdout`
+If everything works well, the server reports its start-up and logs all incoming requests on `stdout`
 
 ### Configuring Domains and Virtual Hosts ###
 
 On a "production system", usually no special precautions need to be taken to run this server.
 
-On a local machine, however, the following configuration steps should be taken:
+Synthetic tests with virtual hosts on a local machine, however, should be prepared as follows:
 
+* generate self-signed certificates for all domains under test:<br>folder `certificates` contains a file `local-server.org.cnf` which can be used for that purpose
+  * copy this file and name the copy `<primary-domain>.cnf` where "<primary-domain>" should be replaced by the name of your primary domain
+  * create a subfolder with the name of your primary domain
+  * open `<primary-domain>.cnf` in a text editor of your choice
+  * replace `local-server.org` with your primary domain (both behind `CN =` and `DNS.1 =`)
+  * append additional domain names as further `DNS.#` entries at your will
+  * save this file and run the following command<br>`openssl req -x509 -nodes -newkey rsa:4096 \`<br>`-keyout <primary-domain>/privkey.pem \`<br>`-out <primary-domain>/fullchain.pem \`<br>`-days 3650 -config <primary-domain>.cnf`<br>(again, after replacing "<primary-domain>" with the name of your primary domain)
+* append an entry for each desired domain to `/etc/hosts`. Each entriy must have the form<br>&nbsp; &nbsp; `127.0.0.1 <primary-domain>`<br>wildcards are not allowed
+* modify the script `startServerWithDomain` by replacing `local-server.org` with the name of your primary domain and - if need be - adding a `--virtual-hosts` option with a comma-separted list of additional domain names (subdomains of your primary domain do not have to be mentioned explicitly, the option `--allow-subdomains` already covers them)
 
-
-
-
+You may now run `startServerWithDomain` and navigate your browser to any of the configured domains (don't forget to specify your server's port number unless it is a standard one)
 
 ## Embedded Node-RED Instance ##
 
 The embedded Node-RED instance comes with two sets of flows for initial "smoke tests": one for a server *with* virtual host processing and one *without*.
 A GET request to `/hello-world` simply responds with a "Hello, World!" message, GET, PUT, POST, PATCH and DELETE requests to `show-request` dump the contents of any incoming message to the Node-RED debug window.
 
-Both flow sets are welcome to be removed and replaced with more meaningful nodes.
+![initial Flow Sets](initialFlows.png)
+
+Both flow sets are welcome to be removed and replaced with more meaningful ones.
 
 ## User Registry ##
 
