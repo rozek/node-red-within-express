@@ -68,7 +68,7 @@ The following options are supported:
 * **`--ignore-www`**<br>if specified, subdomains of the form `www.<domain>` are not treated as a separate subdomain but mapped to their main `<domain>`
 * **`--cert-folder <folder>`**<br>specifies the folder where to find server certificates. By default, this is a subfolder of the server's current working directory called `certificates`
 * **`--pbkdf2-iterations <count>`**<br>specifies the number of iterations when computing PBKDF2 hashes. Default is 100000
-* **`--log-format <format>`**<br>
+* **`--log-format <format>`**<br>specifies the format in which log entries are written into a file. Consider the [morgan documentation]() for a list and explanation of permitted settings. Default is `common`
 
 
 ### Configuring Domains and Virtual Hosts ###
