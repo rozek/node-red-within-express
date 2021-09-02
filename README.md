@@ -100,24 +100,35 @@ The server will not start if file `registeredUsers.json` is missing or does not 
 
 ## CORS Support ##
 
+"Cross-Origin Resource Sharing" (CORS) instructs browsers to restrict resource access to specific domains. For this server, CORS behaviour can be specified in file `sharedResources.json` which is found in the configured `<configuration-folder>`.
+
+This file contains the JSON serialization of a JavaScript array containing objects with the following format:
+
+* property `PathPattern` contains a regular expression (RegExp) pattern which is compared against any incoming URL path (including the domain name, if virtual hosts are to be processed)
+* property `OriginList` is either `null` (which acts as a placeholder allowing unrestricted resource sharing) or a JavaScript array containing the names (without protocols or port numbers) of all domains which are allowed to request the matching resource (whereas any domain not mentioned in this list is not allowed to access the resource)
+
+Without any entries, browser settings apply (which are often quite restrictive)
+
+The server will not start if file `sharedResources.json` is missing or does not have valid JSON content.
+
 ## Content Security Policies ##
+
+Browsers constantly impose tighter security restrictions on HTML pages. If certain facilitations are needed, they can be entered in a file called `ContentSecurityPolicies.json` which is found in the configured `<configuration-folder>`.
+
+This file contains the JSON serialization of a JavaScript object with the following format:
+
+* the object's property names are "Content Security Policies" (CSP) "directives"<br>see [the documentation at MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) for a list and explanation of available directives
+* the object's property values are JavaScript arrays containing a list of policies for the given directive (see [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/default-src) for a list and explanation of such policies)
+
+The server will not start if file `ContentSecurityPolicies.json` is missing or does not have valid JSON content.
 
 ## Logging ##
 
+The server uses [morgan](https://expressjs.com/en/resources/middleware/morgan.html) for the formatting of log entries.
 
+Two logs are written: a simplified one (which allows to monitor server operation) is written to `stdout`, an extended one into a file named after the configured primary domain (or `localhost`) within the configured `<log-folder>`.
 
-* HTTPS (and auto-redirection from HTTP to HTTPS) with self-signed or "Let's Encrypt" Certificates
-* virtual Hosts
-  * how to configure Domains in /etc/hosts
-  * Subdomains
-* User Registry
-  * Basic Auth and PBKDF2
-  * adding Users to the Registry
-  * protecting the Node-RED Editor
-* CORS Support
-* initial Node-RED Flows
-* Postman Collection for Tests
-
+Unless this has been changed, the larger log file follows the "standard Apache common log format" and may be processed using standard log file analysis tools. Other log format may be configured with command option `--log-format <format>`
 
 ## License ##
 
