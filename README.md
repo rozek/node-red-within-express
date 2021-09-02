@@ -63,6 +63,12 @@ Any text editor will do the job.
 
 ### First Experiments ###
 
+For the sake of a simpler invocation, the available start scripts should be made executable first:
+
+```
+chmod +x startServer*
+```
+
 Now you are ready to start your server: within a terminal window, navigate to the folder containing this repository and either enter
 
 ```
