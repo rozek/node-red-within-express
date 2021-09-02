@@ -83,7 +83,18 @@ Both flow sets may well be removed and replaced with more meaningful nodes.
 ## User registry ##
 
 The server comes with a file `registeredUsers.json` which contains all "registered users" of this server.
+Initially, it contains a single user named "node-red" with password "t0pS3cr3t!" who is needed to access the embedded Node-RED editor.
+New users may be added and existing users changed or deleted at will with a simple text editor.
 
+`registeredUsers.json` contains the JSON serialization of a JavaScript object with the following format:
+
+* the object's property names are the names of registered users<br>user names have no specific format, they may be user ids, email addresses or any other data you are free to choose
+* the object's property values are JavaScript objects with the following properties, at least (additional properties may be added at will):
+  * **Roles**<br>is either `null` or contains a list of strings with the user's roles. There is no specific format for role names - only role `node-red` has a special meaning: users with this role are allowed to access the embedded Node-RED editor
+  * **Salt**<br>contains a random "salt" value which is used during the PBKDF2 password hash calculation
+  * **Hash**<br>contains the actual PBKDF2 hash of the user's password
+
+The server will not start if file `registeredUsers.json` is missing or does not have valid JSON content. Without a user with the role `node-red`, the embedded Node-RED editor cannot be accessed - Node-RED flows, however, will work as normal.
 
 ### Generating "Salt" and "Hash" ###
 
