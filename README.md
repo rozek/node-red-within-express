@@ -75,6 +75,11 @@ The following options are supported:
 
 ## Embedded Node-RED Instance ##
 
+The embedded Node-RED instance comes with two sets of flows for initial "smoke tests": one for a server *with* virtual host processing and one *without*.
+A GET request to `/hello-world` simply responds with a "Hello, World!" message, GET, PUT, POST, PATCH and DELETE requests to `show-request` dump the contents of any incoming message to the Node-RED debug window.
+
+Both flow sets may well be removed and replaced with more meaningful nodes.
+
 ## User registry ##
 
 ### Generating "Salt" and "Hash" ###
