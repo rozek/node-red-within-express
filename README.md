@@ -87,6 +87,8 @@ Thus, open a new tab in your browser and navigate to `localhost:8443/.Node-RED/E
 
 Open the debug output, switch back to the previous browser tab and reload the page you requested before (either `localhost:8443/show-request` or `local-server.org:8443/show-request`). Switch back to the Node-RED editor and inspect the debug window: you should now be able to inspect the request your browser sent to the server.
 
+You are welcome to test that `show-request` with the HTTP methods `PUT`, `POST`, `PATCH` and `DELETE` as well - e.g., using tools like [cURL](https://curl.se/) or [Postman](https://www.postman.com/).
+
 As usual, all requests should have been logged both on the console and in a file called `localhost.log` (or `local-server.log`, resp.) within subfolder `logs`.
 
 ## Invocation Parameters ##
