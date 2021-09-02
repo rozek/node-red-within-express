@@ -70,15 +70,25 @@ The following options are supported:
 * **`--pbkdf2-iterations <count>`**<br>specifies the number of iterations when computing PBKDF2 hashes. Default is 100000
 * **`--log-format <format>`**<br>specifies the format in which log entries are written into a file. Consider the [morgan documentation](https://expressjs.com/en/resources/middleware/morgan.html) for a list and explanation of permitted settings. Default is `common`
 
+If everything works well, the server reports its start-up any logs all incoming requests on `stdout`
 
 ### Configuring Domains and Virtual Hosts ###
+
+On a "production system", usually no special precautions need to be taken to run this server.
+
+On a local machine, however, the following configuration steps should be taken:
+
+
+
+
+
 
 ## Embedded Node-RED Instance ##
 
 The embedded Node-RED instance comes with two sets of flows for initial "smoke tests": one for a server *with* virtual host processing and one *without*.
 A GET request to `/hello-world` simply responds with a "Hello, World!" message, GET, PUT, POST, PATCH and DELETE requests to `show-request` dump the contents of any incoming message to the Node-RED debug window.
 
-Both flow sets may well be removed and replaced with more meaningful nodes.
+Both flow sets are welcome to be removed and replaced with more meaningful nodes.
 
 ## User Registry ##
 
