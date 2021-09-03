@@ -338,12 +338,12 @@
     let Credentials = BasicAuth(Request)
     if (Credentials == null) { return withAuthorizationFailure() }
 
-    let UserName = Credentials.name
+    let UserId   = Credentials.name
     let Password = Credentials.pass
 
-    if (! (UserName in UserRegistry)) { return withAuthorizationFailure() }
+    if (! (UserId in UserRegistry)) { return withAuthorizationFailure() }
 
-    let UserSpecs = UserRegistry[UserName]
+    let UserSpecs = UserRegistry[UserId]
     if (
       (UserSpecs.Password === Password) &&              // internal optimization
       Array.isArray(UserSpecs.Roles) && (UserSpecs.Roles.indexOf('node-red') >= 0)
