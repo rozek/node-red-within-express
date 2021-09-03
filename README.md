@@ -178,7 +178,7 @@ New users may be added and existing users changed or deleted at will with a simp
 
 `registeredUsers.json` contains the JSON serialization of a JavaScript object with the following format:
 
-* the object's property names are the ids of registered users<br>user ids have no specific format, they may be user names, email addresses or any other data you are free to choose - with **one important exception: user ids must not contain any colons (":")** or some authentication mechanisms may fail (while these mechanisms are not part of *this* repository, they may still be imported late from *other* compatible repos)
+* the object's property names are the ids of registered users<br>user ids have no specific format, they may be user names, email addresses or any other data you are free to choose - with **one important exception: user ids must not contain any colons (":")** or some authentication mechanisms may fail (while these mechanisms are not part of *this* repository, they may still be imported later from *other* compatible repos)
 * the object's property values are JavaScript objects with the following properties, at least (additional properties may be added at will):
   * **Roles**<br>is either missing or contains a list of strings with the user's roles. There is no specific format for role names - just the role `node-red` has a special meaning: users with this role are allowed to access the embedded Node-RED editor
   * **Salt**<br>contains a random "salt" value which is used during PBKDF2 password hash calculation
