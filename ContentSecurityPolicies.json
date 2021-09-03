@@ -3,6 +3,6 @@
   "style-src":  ["'self'","'unsafe-inline'"],
   "img-src":    ["'self'","data:","http:"],
   "media-src":  ["'self'"],
-  "connect-src":["'self'","https://catalogue.nodered.org"]
+  "connect-src":["'self'","https://catalogue.nodered.org"],
   "default-src":["'self'"]
 }
