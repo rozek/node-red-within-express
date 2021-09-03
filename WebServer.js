@@ -25,8 +25,10 @@
     userDir:          './Node-RED',    // will be appended to "ConfigRoot" later
     flowFile:         'flows.json',                  // independent of host name
     credentialSecret: 'not-so-secret',
+    flowFilePretty:   true,
 
-    functionGlobalContext: {},
+    functionExternalModules: true,
+    functionGlobalContext:   {},
   }
 
 //------------------------------------------------------------------------------
