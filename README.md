@@ -91,7 +91,7 @@ Go further and navigate to `localhost:8443/hello-world` (or `local-server.org:84
 
 Next, navigate to `localhost:8443/show-request` (or `local-server.org:8443/show-request`, resp.). The browser should now show the text `(see Node-RED debug console)` which reminds you to open the Node-RED editor and have a look into its debug window.
 
-Thus, open a new tab in your browser and navigate to `localhost:8443/.Node-RED/Editor` (or `local-server.org:8443/.Node-RED/Editor`, resp.). Instead of showing anything, your browser should first you to authenticate yourself: enter `node-red` as your user name and `t0pS3cr3t!` as your password (exactly as shown here). If you mistyped anything, the browser will present the authentication dialog again. Otherwise, the Node-RED editor will be opened and you will see a workspace with the initial set of flows that came with this server.
+Thus, open a new tab in your browser and navigate to `localhost:8443/.Node-RED/Editor` (or `local-server.org:8443/.Node-RED/Editor`, resp.). Instead of showing anything, your browser should first ask you to authenticate yourself: enter `node-red` as your user name and `t0pS3cr3t!` as your password (exactly as shown here). If you mistyped anything, the browser will present the authentication dialog again. Otherwise, the Node-RED editor will be opened and you will see a workspace with the initial set of flows that came with this server.
 
 Open the debug output, switch back to the previous browser tab and reload the page you requested before (either `localhost:8443/show-request` or `local-server.org:8443/show-request`). Switch back to the Node-RED editor and inspect the debug window: you should now be able to inspect the request your browser sent to the server.
 
@@ -178,7 +178,7 @@ New users may be added and existing users changed or deleted at will with a simp
 
 `registeredUsers.json` contains the JSON serialization of a JavaScript object with the following format:
 
-* the object's property names are the names of registered users<br>user names have no specific format, they may be user ids, email addresses or any other data you are free to choose
+* the object's property names are the ids of registered users<br>user ids have no specific format, they may be user names, email addresses or any other data you are free to choose
 * the object's property values are JavaScript objects with the following properties, at least (additional properties may be added at will):
   * **Roles**<br>is either missing or contains a list of strings with the user's roles. There is no specific format for role names - just the role `node-red` has a special meaning: users with this role are allowed to access the embedded Node-RED editor
   * **Salt**<br>contains a random "salt" value which is used during PBKDF2 password hash calculation
