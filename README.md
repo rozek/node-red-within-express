@@ -213,7 +213,7 @@ By default, `generateSaltAndHash` assumes a PBKDF2 iteration count of 100000. If
 
 ## Static File Protection ##
 
-By default, all static files are considered as "public", i.e. available to any visitor without prior authentication.
+By default, all static files are considered "public", i.e. available to any visitor without prior authentication.
 
 If desired, however, it is possible to specify, which files should only be available to specific users (who then have to authenticate themselves before they are allowed to access these protected files). Such rules can be specified in file `protectedFiles.json` which is found in the configured `<configuration-folder>`.
 
@@ -221,6 +221,8 @@ This file contains the JSON serialization of a JavaScript object with the follow
 
 * the object's property names are regular expression (RegExp) patterns which are compared against any incoming URL path (including the domain name, if virtual hosts are to be processed) 
 * the object's property values are strings which either contain a single asterisk ("`*`") indicating that any authenticated user may access, or a blank separated list with the names of those users who are allowed to access the matching file.
+
+The example that comes with this server protects all files and folders whose names start with a dot (".") and (in the case of protected folders) their contents.
 
 The server will not start if file `protectedFiles.json` is missing or does not have valid JSON content.
 
