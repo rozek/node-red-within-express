@@ -331,26 +331,24 @@
     process.exit(1)
   }
 
-  function authorizeRequest (Request, Response, next) {
-    function withAuthorizationFailure () {
+  function authenticateUser (Request, Response, next) {
+    function withAuthenticationFailure () {
       Response.set('WWW-Authenticate','Basic realm="' + Request.virtualHost + '"')
       return Response.sendStatus(401)
     }
 
     let Credentials = BasicAuth(Request)
-    if (Credentials == null) { return withAuthorizationFailure() }
+    if (Credentials == null) { return withAuthenticationFailure() }
 
     let UserId   = Credentials.name
     let Password = Credentials.pass
 
-    if (! (UserId in UserRegistry)) { return withAuthorizationFailure() }
+    if (! (UserId in UserRegistry)) { return withAuthenticationFailure() }
 
     let UserSpecs = UserRegistry[UserId]
-    if (
-      (UserSpecs.Password === Password) &&              // internal optimization
-      Array.isArray(UserSpecs.Roles) && (UserSpecs.Roles.indexOf('node-red') >= 0)
-    ) {
-      return next()
+    if (UserSpecs.Password === Password) {              // internal optimization
+      Request.authenticatedUser = UserId
+      return next(Request,Response)
     }
 
     crypto.pbkdf2(
@@ -359,14 +357,86 @@
         if (Error == null) {
           if (computedHash.toString('hex') === UserSpecs.Hash) {
             UserSpecs.Password = Password     // speeds up future auth. requests
-            if (
-              Array.isArray(UserSpecs.Roles) && (UserSpecs.Roles.indexOf('node-red') >= 0)
-            ) { return next() }
+            Request.authenticatedUser = UserId
+            return next(Request,Response)
           }
         }
-        return withAuthorizationFailure()
+        return withAuthenticationFailure()
       }
     )
+  }
+
+//------------------------------------------------------------------------------
+//--                           Node-RED Protection                            --
+//------------------------------------------------------------------------------
+
+  function protectNodeRED (Request, Response, next) {
+    authenticateUser(Request, Response, (Request, Response) => {
+      let authenticatedUser = Request.authenticatedUser
+      let authorizedRoles = (
+        authenticatedUser == null ? null : UserRegistry[authenticatedUser].Roles
+      )
+      if (
+        Array.isArray(authorizedRoles) &&
+        (authorizedRoles.indexOf('node-red') >= 0)
+      ) {
+        return next()
+      } else {
+        Response.set('WWW-Authenticate','Basic realm="' + Request.virtualHost + '"')
+        return Response.sendStatus(401)
+      }
+    })
+  }
+
+//------------------------------------------------------------------------------
+//--                          static File Protection                          --
+//------------------------------------------------------------------------------
+
+  let ProtectionRegistry
+  try {
+    ProtectionRegistry = Object.assign(Object.create(null), JSON.parse(
+      fs.readFileSync(path.join(ConfigRoot, 'protectedFiles.json'), 'utf8')
+    ))
+
+    for (let PathPattern in ProtectionRegistry) {
+      let UserList = ProtectionRegistry[PathPattern].trim().replace(/\s+/g,' ').split(' ')
+      switch (UserList.length) {
+        case 0: UserList = null; break
+        case 1: if (UserList[0] === '*') { UserList = null }; break
+      }
+
+      ProtectionRegistry[PathPattern] = {
+        PathPattern:   new RegExp(PathPattern),
+        permittedUsers:UserList
+      }
+    }
+  } catch (Signal) {
+    console.error('could not load file protection registry',Signal)
+    process.exit(1)
+  }
+
+  function protectStaticFiles (Request, Response, next) {
+    let FilePath = Request.url                     // has been normalized before
+
+    for (let Entry in ProtectionRegistry) {
+      if (ProtectionRegistry[Entry].PathPattern.test(FilePath)) {
+        authenticateUser(Request, Response, (Request, Response) => {
+          let authenticatedUser = Request.authenticatedUser
+          let permittedUsers    = ProtectionRegistry[Entry].permittedUsers
+          switch (true) {
+            case (permittedUsers == null):
+            case (permittedUsers.indexOf(authenticatedUser) >= 0):
+              return next()
+            default:
+              Response.set('WWW-Authenticate','Basic realm="' + Request.virtualHost + '"')
+              return Response.sendStatus(401)
+          }
+        })
+        return
+      }
+    }
+
+    return next()                          // path does not seem to be protected
   }
 
 //------------------------------------------------------------------------------
@@ -412,9 +482,9 @@
       ':remote-addr :remote-user :method :url :status :res[content-length] - :response-time ms'
     ))
 
-  /**** require basic authentication for Node-RED editor (only) ****/
+  /**** require basic authentication for Node-RED editor ****/
 
-    actualService.use(REDSettings.httpAdminRoot, authorizeRequest)
+    actualService.use(REDSettings.httpAdminRoot, protectNodeRED)
 
   /**** embed Node-RED ****/
 
@@ -433,6 +503,10 @@ console.log('Node-RED Settings:',REDSettings)
 
     actualService.use(REDSettings.httpNodeRoot, RED.httpNode)   // for "HTTP in"
     actualService.use(REDSettings.httpAdminRoot,RED.httpAdmin) // for the Editor
+
+  /**** require basic authentication for protected static files ****/
+
+    actualService.get('*', protectStaticFiles)
 
   /**** paths not caught by Node-RED could be static files ****/
 
