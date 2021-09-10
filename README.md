@@ -138,12 +138,12 @@ On a "production system", usually no special precautions need to be taken to run
 Synthetic tests with virtual hosts on a local machine, however, should be prepared as follows:
 
 * generate self-signed certificates for all domains under test:<br>folder `certificates` contains a file `local-server.org.cnf` which can be used for that purpose
-  * copy this file and name the copy `<primary-domain>.cnf` where "<primary-domain>" should be replaced by the name of your primary domain
+  * copy this file and name the copy `<primary-domain>.cnf` where "&lt;primary-domain&gt;" should be replaced by the name of your primary domain
   * create a subfolder with the name of your primary domain
   * open `<primary-domain>.cnf` in a text editor of your choice
   * replace `local-server.org` with your primary domain (both behind `CN =` and `DNS.1 =`)
   * append additional domain names as further `DNS.#` entries at your will
-  * save this file and run the following command<br>`openssl req -x509 -nodes -newkey rsa:4096 \`<br>`-keyout <primary-domain>/privkey.pem \`<br>`-out <primary-domain>/fullchain.pem \`<br>`-days 3650 -config <primary-domain>.cnf`<br>(again, after replacing "<primary-domain>" with the name of your primary domain)
+  * save this file and run the following command<br>`openssl req -x509 -nodes -newkey rsa:4096 \`<br>`-keyout <primary-domain>/privkey.pem \`<br>`-out <primary-domain>/fullchain.pem \`<br>`-days 3650 -config <primary-domain>.cnf`<br>(again, after replacing "&lt;primary-domain&gt;" with the name of your primary domain)
 * append an entry for each desired domain to `/etc/hosts`. Each entriy must have the form<br>&nbsp; &nbsp; `127.0.0.1 <primary-domain>`<br>wildcards are not allowed
 * modify the script `startServerWithDomain` by replacing `local-server.org` with the name of your primary domain and - if need be - adding a `--virtual-hosts` option with a comma-separted list of additional domain names (subdomains of your primary domain do not have to be mentioned explicitly, the option `--allow-subdomains` already covers them)
 
@@ -211,6 +211,10 @@ By default, `generateSaltAndHash` assumes a PBKDF2 iteration count of 100000. If
 ./generateSaltAndHash pbkdf2-iterations <count>
 ```
 
+## Static File Protection ##
+  
+  
+  
 ## CORS Support ##
 
 "Cross-Origin Resource Sharing" (CORS) instructs browsers to restrict resource access to specific domains. For this server, CORS behaviour can be specified in file `sharedResources.json` which is found in the configured `<configuration-folder>`.
