@@ -493,7 +493,7 @@
       ServerPort, RedirectionPort, behindProxy,
       primaryDomain, virtualHosts, allowSubdomains, PBKDF2Iterations,
       FileRoot, ConfigRoot, LogRoot,
-      CORSRegistry, UserRegistry,
+      CORSRegistry, UserRegistry, ProtectionRegistry,
       functionExternalModules:true
     }
 
