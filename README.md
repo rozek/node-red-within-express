@@ -228,7 +228,7 @@ The server will not start if file `protectedFiles.json` is missing or does not h
 
 ## CORS Support ##
 
-"Cross-Origin Resource Sharing" (CORS) instructs browsers to restrict resource access to specific domains. For this server, CORS behaviour can be specified in file `sharedResources.json` which is found in the configured `<configuration-folder>`.
+"Cross-Origin Resource Sharing" ([CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)) instructs browsers to restrict resource access to specific domains. For this server, CORS behaviour can be specified in file `sharedResources.json` which is found in the configured `<configuration-folder>`.
 
 This file contains the JSON serialization of a JavaScript array containing objects with the following format:
 
