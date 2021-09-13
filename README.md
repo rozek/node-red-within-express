@@ -6,7 +6,7 @@ Its intended purpose is to provide a very easily maintainable server for develop
 
 > Nota bene: this work is currently in progress. While it may already be usable, it is safer to wait until end of September 2021. Please, stay tuned
 
-> Just a small note: if you like this module and plan to use it, consider "starring" this repository (you will find the "Star" button on the top right of this page), so that I know which of my repositories to take most care of.
+> Just a small note: if you like this contribution and plan to use it, consider "starring" this repository (you will find the "Star" button on the top right of this page), so that I know which of my repositories to take most care of.
 
 ## Features ##
 
