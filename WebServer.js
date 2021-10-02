@@ -343,7 +343,9 @@
     let UserId   = Credentials.name
     let Password = Credentials.pass
 
-    if (! (UserId in UserRegistry)) { return withAuthenticationFailure() }
+    if (
+      ! (UserId in UserRegistry) || (UserRegistry[UserId] == null)
+    ) { return withAuthenticationFailure() }
 
     let UserSpecs = UserRegistry[UserId]
     if (UserSpecs.Password === Password) {              // internal optimization
