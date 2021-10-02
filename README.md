@@ -4,7 +4,7 @@ This repository contains an HTTP server based on [Node.js](https://nodejs.org/en
 
 Its intended purpose is to provide a very easily maintainable server for development and test of web and REST service prototypes.
 
-> Just a small note: if you like this contribution and plan to use it, consider "starring" this repository (you will find the "Star" button on the top right of this page), so that I know which of my repositories to take most care of.
+> Just a small note: if you like this work and plan to use it, consider "starring" this repository (you will find the "Star" button on the top right of this page), so that I know which of my repositories to take most care of.
 
 ## Features ##
 
