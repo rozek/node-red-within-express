@@ -1,8 +1,9 @@
 {
-  "script-src": ["'self'","'unsafe-inline'","'unsafe-eval'"],
-  "style-src":  ["'self'","'unsafe-inline'"],
-  "img-src":    ["'self'","data:","http:"],
-  "media-src":  ["'self'"],
-  "connect-src":["'self'","https://catalogue.nodered.org"],
-  "default-src":["'self'"]
+  "script-src":      ["'self'","'unsafe-inline'","'unsafe-eval'","data:","filesystem:","blob:"],
+  "script-src-attr": ["'self'","'unsafe-inline'","'unsafe-eval'"],
+  "style-src":       ["'self'","'unsafe-inline'"],
+  "img-src":         ["'self'","data:","http:"],
+  "media-src":       ["'self'"],
+  "connect-src":     ["'self'","https://catalogue.nodered.org"],
+  "default-src":     ["'self'"]
 }
