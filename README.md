@@ -241,6 +241,8 @@ The server will not start if file `sharedResources.json` is missing or does not 
 
 ## Content Security Policies ##
 
+"Content Security Policies" (CSPs) are a method for web servers to ask browsers for imposing certain restrictions when the delivered page is shown (and executed). Carefully crafted, CSPs may reduce the effect of Cross-Site Scripting (XSS) and data injection attacks. Sloppyly chosen, the delivered web page will just not work as intended.
+
 Browsers constantly impose tighter security restrictions on HTML pages. If certain facilitations are needed, they can be entered in a file called `ContentSecurityPolicies.json` which is found in the configured `<configuration-folder>`.
 
 This file contains the JSON serialization of a JavaScript object with the following format:
