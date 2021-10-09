@@ -245,7 +245,9 @@ The server will not start if file `sharedResources.json` is missing or does not 
 
 Consideration of CSPs requires a modern browser (as this function is actually provided by the browser) and should always be tested with an eye on the browser's console (where CSP violations will be reported)
 
-Browsers constantly impose tighter security restrictions on HTML pages. If certain facilitations are needed, they can be entered in a file called `ContentSecurityPolicies.json` which is found in the configured `<configuration-folder>`.
+> European users may also use CSPs as another aid for guaranteeing the GDPR (or DSGVO) compliance of their web sites by permitting web pages to access only servers which are known for their GDPR compliance, and inhibiting access to any other unknown ones.
+
+For this server, "Content Security Policies" can be entered in a file called `ContentSecurityPolicies.json` which is found in the configured `<configuration-folder>`. For technical reasons, the given CSPs apply to *all* delivered web pages and can not be specified per page.
 
 This file contains the JSON serialization of a JavaScript object with the following format:
 
