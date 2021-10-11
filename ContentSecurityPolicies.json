@@ -6,5 +6,5 @@
   "media-src":       ["'self'"],
   "connect-src":     ["'self'","https://catalogue.nodered.org"],
   "default-src":     ["'self'"],
-  "frame-ancestors": ["'self'","https://slides.com"]
+  "frame-ancestors": ["'self'"]
 }
