@@ -1,5 +1,5 @@
 {
-  "name": "node-red-within-restana",
+  "name": "node-red-within-express",
   "version": "0.1.0",
   "description": "embedding Node-RED within a Server built with Node.js and Express",
   "scripts": {
@@ -12,8 +12,7 @@
   "keywords": [
     "web-server",
     "node-red",
-    "express-js",
-    "restana"
+    "express-js"
   ],
   "author": "Andreas Rozek <a.rozek@gmx.de> (https://www.rozek.de/)",
   "license": "MIT",
