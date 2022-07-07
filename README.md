@@ -144,7 +144,7 @@ Synthetic tests with virtual hosts on a local machine, however, should be prepar
   * replace `local-server.org` with your primary domain (both behind `CN =` and `DNS.1 =`)
   * append additional domain names as further `DNS.#` entries at your will
   * save this file and run the following command<br>`openssl req -x509 -nodes -newkey rsa:4096 \`<br>`-keyout <primary-domain>/privkey.pem \`<br>`-out <primary-domain>/fullchain.pem \`<br>`-days 3650 -config <primary-domain>.cnf`<br>(again, after replacing "&lt;primary-domain&gt;" with the name of your primary domain)
-* append an entry for each desired domain to `/etc/hosts`. Each entriy must have the form<br>&nbsp; &nbsp; `127.0.0.1 <primary-domain>`<br>wildcards are not allowed
+* append an entry for each desired domain to `/etc/hosts`. Each entry must have the form<br>&nbsp; &nbsp; `127.0.0.1 <primary-domain>`<br>wildcards are not allowed
 * modify the script `startServerWithDomain` by replacing `local-server.org` with the name of your primary domain and - if need be - adding a `--virtual-hosts` option with a comma-separted list of additional domain names (subdomains of your primary domain do not have to be mentioned explicitly, the option `--allow-subdomains` already covers them)
 
 You may now run `startServerWithDomain` and navigate your browser to any of the configured domains (don't forget to specify your server's port number unless it is a standard one)
