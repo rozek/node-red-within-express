@@ -17,9 +17,9 @@
   "author": "Andreas Rozek <a.rozek@gmx.de> (https://www.rozek.de/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rozek/node-red-within-restana/issues"
+    "url": "https://github.com/rozek/node-red-within-express/issues"
   },
-  "homepage": "https://github.com/rozek/node-red-within-restana#readme",
+  "homepage": "https://github.com/rozek/node-red-within-express#readme",
   "dependencies": {
     "commander": "^8.1.0",
     "express": "^4.17.1",
