@@ -1,6 +1,6 @@
 # node-red-within-express #
 
-This repository contains an HTTP server based on [Node.js](https://nodejs.org/en/) with [Express.js](http://expressjs.com/) including an embedded [Node-RED](https://nodered.org/) instance.
+This repository contains an HTTP(S) server based on [Node.js](https://nodejs.org/en/) with [Express.js](http://expressjs.com/) including an embedded [Node-RED](https://nodered.org/) instance.
 
 Its intended purpose is to provide a very easily maintainable server for development and test of web and REST service prototypes.
 
